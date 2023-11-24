@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: hello-argocd-manifest
+  namespace: default
+spec:
+  interval: 1m0s
+  ref:
+    branch: main
+  url: https://github.com/mhussain78/hello-argocd-manifest.git
