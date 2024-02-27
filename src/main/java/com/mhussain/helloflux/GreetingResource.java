@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import static java.time.Instant.now;
 
-@RequestMapping("/resources/greeting")
+@RequestMapping("/resources/greetings")
 @RestController
 public class GreetingResource {
 
