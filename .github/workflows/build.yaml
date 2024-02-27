@@ -16,6 +16,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+          cache: 'maven'
       - name: Build and test
         run: mvn clean verify
   docker-build-and-push:
