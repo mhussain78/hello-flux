@@ -39,7 +39,7 @@ jobs:
         name: Docker build and push
         with:
           image: mhussain78/hello-flux
-          tags: 0.0.23
+          tags: 0.0.24
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -51,4 +51,4 @@ jobs:
             --header "Accept: application/vnd.github+json" \
             --header "X-GitHub-Api-Version: 2022-11-28" \
             --header "Content-Type: application/json" \
-            --data '{"event_type": "NAME", "client_payload": {"ref": "fluxcd-2022", "image-tag": "0.0.23"}}'
+            --data '{"event_type": "NAME", "client_payload": {"ref": "fluxcd-2022", "image-tag": "0.0.24"}}'
