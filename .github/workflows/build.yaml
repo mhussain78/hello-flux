@@ -31,8 +31,6 @@ jobs:
     needs: build-and-test
     runs-on: ubuntu-latest
     steps:
-      - env:
-          GH_TOKEN: ${{ secrets.ACTIONS_KEY }}
       - uses: actions/download-artifact@v4
         with:
           name: spring boot app
@@ -46,7 +44,9 @@ jobs:
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      - name: notify manifest repository
+      - name: Notify manifest repository
+        env:
+          GH_TOKEN: ${{ secrets.ACTIONS_KEY }}
         run: |
           curl --location 'https://api.github.com/repos/mhussain78/flux-bootstrap/dispatches' \
             --header 'Authorization: Bearer $GH_TOKEN' \
