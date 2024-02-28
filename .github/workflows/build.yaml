@@ -19,6 +19,12 @@ jobs:
           cache: 'maven'
       - name: Build and test
         run: mvn clean verify
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spring boot app
+          path: ./target/*.jar
+
   docker-build-and-push:
     needs: build-and-test
     runs-on: ubuntu-latest
