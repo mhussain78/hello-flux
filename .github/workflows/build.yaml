@@ -48,7 +48,6 @@ jobs:
         run: |
           curl --location 'https://api.github.com/repos/mhussain78/flux-bootstrap/dispatches' \
             --header 'Authorization: Bearer ${{ secrets.DOCKERHUB_PASSWORD }}' \
-              -u ${{ secrets.ACTIONS_KEY }}
             --header 'Accept: application/vnd.github+json' \
             --header 'X-GitHub-Api-Version: 2022-11-28' \
             --header 'Content-Type: application/json' \
