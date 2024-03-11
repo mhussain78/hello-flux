@@ -11,5 +11,15 @@ jobs:
         run: |
                curl https://api.github.com/repos/mhussain78/fluxcd-installation-test/actions/runs -o test_runs.json
 
+      - name: Select the first object from json
+        id: jp_output
+        run: echo "::set-output name=run_object::$(cat test_runs.json | jq -r '[.workflow_runs[] | select(.display_title == "Kustomization/hello-flux.default")][0]')"
+
+      - name: Print the most recent run_object
+        run: echo ${{ steps.jp_output.outputs.run_object }}
+
+
+
+
 #      - name: Check on failures
 #        run: exit 1
