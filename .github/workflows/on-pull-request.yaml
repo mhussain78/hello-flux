@@ -1,0 +1,8 @@
+name: check the integration pipeline
+on: pull_request
+jobs:
+  check-integration-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      name: Echo Running
+      run: echo "Hello"
