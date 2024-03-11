@@ -21,5 +21,6 @@ jobs:
         run: |
           echo ${{steps.jp_output.outputs.first_run_conclusion}}
 
-#      - name: Check on failures
-#        run: exit 1
+      - name: Check on failures
+        if: ${{ steps.jp_output.outputs.first_run_conclusion == 'failure' }}
+        run: exit 1
