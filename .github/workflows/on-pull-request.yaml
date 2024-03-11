@@ -12,7 +12,9 @@ jobs:
 
       - name: Select the first object from json
         id: jp_output
-        run: echo "::set-output name=run_object::$(cat test_runs.json | jq -r '[.workflow_runs[] | select(.display_title == "Kustomization/hello-flux.default")][0]' )"
+        run: |
+          first_run=$( cat test_runs.json | jq -r '[.workflow_runs[] | select(.display_title == "Kustomization/hello-flux.default")][0]' )
+          echo "::set-output name=run_object::$run_object"
 
       - name: Output the json file
         run: echo ${{ steps.jp_output.outputs.run_object }}
