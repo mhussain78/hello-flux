@@ -16,7 +16,7 @@ jobs:
         run: echo "::set-output name=run_object::$(cat test_runs.json | jq -r '[.workflow_runs[] | select(.display_title == "Kustomization/hello-flux.default")][0]')"
 
       - name: Print the most recent run_object
-        run: echo ${{ fromJSON(steps.jp_output.outputs.run_object).name }}
+        run: echo ${{ fromJson(steps.jp_output.outputs.run_object).name }}
 
 
 
