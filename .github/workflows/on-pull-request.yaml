@@ -17,5 +17,9 @@ jobs:
           echo "::set-output name=first_run_conclusion::first_run_conclusion"
           echo $first_run_conclusion
 
+      - name: Output the first run conclusion
+        run: |
+          echo ${{steps.jp_output.outputs.first_run_conclusion}}
+
 #      - name: Check on failures
 #        run: exit 1
