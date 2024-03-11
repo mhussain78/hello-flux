@@ -16,12 +16,8 @@ jobs:
           first_run=$( cat test_runs.json | jq -r '[.workflow_runs[] | select(.display_title == "Kustomization/hello-flux.default")][0]' )
           echo "::set-output name=first_run::first_run"
           echo $first_run
+          echo ${{ fromJson($first_run) }}
 
-      - name: Output the json file
-        run: echo ${{ steps.jp_output.outputs.first_run }}
-
-      - name: Print the most recent run_object
-        run: echo ${{ steps.jp_output.outputs.first_run.name }}
 
 
 #      - name: Check on failures
