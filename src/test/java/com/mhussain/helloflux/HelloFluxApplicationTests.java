@@ -8,7 +8,7 @@ class HelloFluxApplicationTests {
 
 	@Test
 	void contextLoads() {
-		System.out.println("Hello - Ole");
+		System.out.println("Hello - Jushka");
 	}
 
 }
