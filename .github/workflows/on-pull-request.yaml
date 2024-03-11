@@ -8,15 +8,14 @@ jobs:
         run: echo "Hello"
 
       - name: Call REST API and save in file
-        run: |
-               curl https://api.github.com/repos/mhussain78/fluxcd-installation-test/actions/runs -o test_runs.json
+        run: curl https://api.github.com/repos/mhussain78/fluxcd-installation-test/actions/runs -o test_runs.json
 
       - name: Select the first object from json
         id: jp_output
-        run: echo "::set-output name=run_object::$(cat test_runs.json | jq -r '[.workflow_runs[] | select(.display_title == "Kustomization/hello-flux.default")][0]')"
+        run: echo "::set-output name=run_object::$(cat test_runs.json | jq -r '[.workflow_runs[] | select(.display_title == "Kustomization/hello-flux.default")][0]' )"
 
       - name: Output the json file
-        run: echo ${{ steps.jp_output.outputs.run_object }}
+        run: echo ${{ fromJson(steps.jp_output.outputs.run_object) }}
 
       - name: Print the most recent run_object
         run: echo ${{ fromJson(steps.jp_output.outputs.run_object).name }}
