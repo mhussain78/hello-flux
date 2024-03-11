@@ -1,5 +1,5 @@
 name: check the integration pipeline
-on: [pull_request]
+on: [pull_request, push]
 jobs:
   check-integration-pipeline:
     runs-on: ubuntu-latest
