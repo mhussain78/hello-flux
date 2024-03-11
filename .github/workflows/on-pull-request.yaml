@@ -9,7 +9,17 @@ jobs:
 
       - name: Call REST API
         run: |
-          curl https://api.github.com/repos/mhussain78/fluxcd-installation-test/actions/runs
+          {
+               curl https://api.github.com/repos/mhussain78/fluxcd-installation-test/actions/runs \
+              | jq -r '[.workflow_runs[] | select(.display_title == "Kustomization/hello-flux.default")][0]'
+          } >> "$GITHUB_OUTPUT"
 
-      - name: Check on failures
-        run: exit 1
+      - name: Out the JSON
+        run: |
+          echo "$GITHUB_OUTPUT"
+          
+          
+          
+
+#      - name: Check on failures
+#        run: exit 1
