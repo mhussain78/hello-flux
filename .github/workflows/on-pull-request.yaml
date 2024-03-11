@@ -13,12 +13,9 @@ jobs:
       - name: Select the first object from json
         id: jp_output
         run: |
-          first_run=$( cat test_runs.json | jq -r '[.workflow_runs[] | select(.display_title == "Kustomization/hello-flux.default")][0]' )
-          echo "::set-output name=first_run::first_run"
-          echo $first_run
-          echo ${{ fromJson(first_run) }}
-
-
+          first_run_conclusion=$( cat test_runs.json | jq -r '[.workflow_runs[] | select(.display_title == "Kustomization/hello-flux.default")][0].conclusion' )
+          echo "::set-output name=first_run_conclusion::first_run_conclusion"
+          echo $first_run_conclusion
 
 #      - name: Check on failures
 #        run: exit 1
