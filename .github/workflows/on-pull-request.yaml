@@ -20,9 +20,7 @@ jobs:
         run: echo ${{ steps.jp_output.outputs.run_object }}
 
       - name: Print the most recent run_object
-        run: echo ${{ fromJson(steps.jp_output.outputs.run_object).name }}
-
-
+        run: echo ${{ steps.jp_output.outputs.run_object.name }}
 
 
 #      - name: Check on failures
