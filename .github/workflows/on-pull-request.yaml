@@ -8,7 +8,7 @@ jobs:
         run: echo "Hello"
 
       - name: Call REST API and save in file
-        run: curl https://api.github.com/repos/mhussain78/fluxcd-installation-test/actions/runss -o test_runs.json
+        run: curl https://api.github.com/repos/mhussain78/fluxcd-installation-test/actions/runss -o test_runs.json -f
 
       - name: Select the first object from json
         id: jp_output
