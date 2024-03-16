@@ -12,15 +12,12 @@ jobs:
 
       - name: Select the first object from json
         id: jp_output
-        run: |
-          first_run_conclusion=$(<< EOF
-            cat test_runs.json | 
+        run: >-
+          first_run_conclusion=$(cat test_runs.json | 
             jq -r '[.workflow_runs[] | select(.display_title == "Kustomization/hello-flux.default")][0]
-           .conclusion' 
-            EOF
-          )
-          echo "first_run_conclusion=$first_run_conclusion"  >> $GITHUB_OUTPUT
-          echo $first_run_conclusion
+           .conclusion');
+          echo "first_run_conclusion=$first_run_conclusion"  >> $GITHUB_OUTPUT;
+          echo $first_run_conclusion;
 
       - name: Output the first run conclusion
         run: |
