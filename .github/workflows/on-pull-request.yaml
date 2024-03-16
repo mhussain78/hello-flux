@@ -8,15 +8,18 @@ jobs:
         run: echo "Hello"
 
       - name: Call REST API and save in file
-        run: curl https://api.github.com/repos/mhussain78/fluxcd-installation-test/actions/runss -o test_runs.json -f
+        run: curl https://api.github.com/repos/mhussain78/fluxcd-installation-test/actions/runs -o test_runs.json -f
 
       - name: Select the first object from json
         id: jp_output
         run: >-
           first_run_conclusion=$(cat test_runs.json | 
-            jq -r '[.workflow_runs[] | 
-                                  select(.display_title == "Kustomization/hello-flux.default")][0]
-           .conclusion');
+            jq -r '[
+                     .workflow_runs[] | 
+                      select(.display_title == "Kustomization/hello-flux.default")
+                   ]
+                   [0].conclusion'
+          );
           echo $first_run_conclusion;
           echo "first_run_conclusion=$first_run_conclusion"  >> $GITHUB_OUTPUT;
 
