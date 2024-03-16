@@ -17,7 +17,8 @@ jobs:
             cat test_runs.json | 
             jq -r '[.workflow_runs[] | select(.display_title == "Kustomization/hello-flux.default")][0]
            .conclusion' 
-          EOF)
+            EOF
+          )
           echo "first_run_conclusion=$first_run_conclusion"  >> $GITHUB_OUTPUT
           echo $first_run_conclusion
 
