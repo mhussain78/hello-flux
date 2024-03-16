@@ -13,8 +13,9 @@ jobs:
       - name: Select the first object from json
         id: jp_output
         run: >-
-          echo $(cat test_runs.json | 
-            jq -r '[.workflow_runs[] | select(.display_title == "Kustomization/hello-flux.default")][0]
+          first_run_conclusion=$(cat test_runs.json | 
+            jq -r '[.workflow_runs[] | 
+                                  select(.display_title == "Kustomization/hello-flux.default")][0]
            .conclusion');
           echo $first_run_conclusion;
           echo "first_run_conclusion=$first_run_conclusion"  >> $GITHUB_OUTPUT;
