@@ -22,7 +22,7 @@ jobs:
           );
           echo $first_run_conclusion;
           echo "first_run_conclusion=$first_run_conclusion"  >> $GITHUB_OUTPUT;
-          echo ${{ env.first_run_conclusion  }}
+          echo "content of env: ${{ env.first_run_conclusion  }}"
 
       - name: Output the first run conclusion
         run: |
