@@ -39,7 +39,7 @@ jobs:
         name: Docker build and push
         with:
           image: mhussain78/hello-flux
-          tags: 0.0.45
+          tags: 0.0.46
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKERHUB_USERNAME }}
