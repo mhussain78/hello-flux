@@ -13,7 +13,7 @@ public class GreetingResource {
 
     @GetMapping("{name}")
     Greeting getGreeting(@PathVariable("name") String name) {
-        return new Greeting("Hello " + name + " #### " + now() + " :-)");
+        return new Greeting("Hello " + name + " @@@@ " + now() + " :-)");
     }
 
 }
